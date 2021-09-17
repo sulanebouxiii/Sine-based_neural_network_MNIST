@@ -146,8 +146,8 @@ void backprop(float [] iput, float [] yhid1, float [] yhid2, float [] lables, fl
       weights2[j][0][i]-=dw0;
       weights2[j][1][i]-=dw1;
       float dy_dx = TWO_PI*weights2[j][0][i]*weights2[j][1][i]*cos(yhid1[j]*TWO_PI*weights2[j][1][i]);
-      error2 [0][j] = +dy_dx*error1[0][i];         //calculate the error of hidden layer 1 using chain rule
-      error2 [1][j] = +dy_dx*error1[1][i];
+      error2 [0][j] += dy_dx*error1[0][i];         //calculate the error of hidden layer 1 using chain rule
+      error2 [1][j] += dy_dx*error1[1][i];
       
     }
   }
